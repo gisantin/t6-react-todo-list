@@ -8,7 +8,7 @@ function Button(props){
     }
 
     return(
-        <button disable={props.disabled}  
+        <button disabled={props.disabled}  
         className={classes}>
         {props.children}
         </button >
