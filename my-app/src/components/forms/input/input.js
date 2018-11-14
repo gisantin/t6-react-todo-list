@@ -9,9 +9,9 @@ class Input extends Component {  //ou React.Compnents sem importar lá em cima
         }
         hasError = () => { // Criou um método pra validar se tem erro ou não ex.erro: Campo obrigatório etc...
             if(this.state.message === null || this.state.message !== ''){
-                return false //se não tiver erro, retorna falso, nao deu erro
+                return true //se não tiver erro, retorna falso, nao deu erro
             }else {
-                return true // se tiver erro retorna true
+                return false // se tiver erro retorna true
             }
         }
         handleChange = (e) => { //arrow function substitui o .bind() no ES6
@@ -23,7 +23,7 @@ class Input extends Component {  //ou React.Compnents sem importar lá em cima
             //this.handleChange = this.handleChange.bind(this) //ele direciona o this.handleChange pra ser usado fora dessa função
             if(this.props.required && value.trim() === ''){ //.trim() remove espaços do campo
                 message = 'Campo Obrigatório'
-            }else if(this.props.minLength && value.length < this.props.minLength){
+            }else if(value && this.props.minLength && value.length < this.props.minLength){
                 message = `Digite pelo menos ${this.props.minLength} caracteres` 
             }else if(this.props.type==='email' && !regex.test(value)){
                 message = 'Digite um email válido'
